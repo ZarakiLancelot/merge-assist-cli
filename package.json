@@ -8,12 +8,16 @@
   },
   "type": "commonjs",
   "scripts": {
-    "dev": "ts-node src/index.js",
+    "dev": "ts-node src/index.ts",
     "build": "tsc",
-    "start": "npm run build && node dist/index.js",
+    "start": "node dist/index.js",
     "clean": "rm -rf dist",
-    "test:detect": "ts-node src/index.ts detect",
-    "test:analyze": "ts-node src/index.ts analyze",
+    "link": "npm run build && npm link",
+    "unlink": "npm unlink -g",
+    "test:detect": "npm run build && node dist/index.js detect",
+    "test:analyze": "npm run build && node dist/index.js analyze",
+    "test:resolve": "npm run build && node dist/index.js resolve",
+    "test:status": "npm run build && node dist/index.js status",
     "prebuild": "npm run clean"
   },
   "keywords": [

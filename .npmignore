@@ -1,0 +1,37 @@
+# Source files
+src/
+*.ts
+tsconfig.json
+
+# Development
+.vscode/
+.idea/
+*.log
+.DS_Store
+
+# Testing
+tests/
+*.test.ts
+*.spec.ts
+
+# Documentation
+docs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Misc
+*.md
+!README.md
