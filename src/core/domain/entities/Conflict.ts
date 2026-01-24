@@ -12,6 +12,12 @@ export interface Conflict {
   baseContent?: string;
   context: ConflictContext;
   status: ConflictStatus;
+  resolve(): void;
+  skip(): void;
+  isPending(): boolean;
+  isResolved(): boolean;
+  getLineRange(): string;
+  getConflictSize(): number;
 }
 
 export class ConflictEntity implements Conflict {
