@@ -1,14 +1,31 @@
 {
   "name": "merge-assist-cli",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "AI-powered merge conflict resolver using GitHub Copilot CLI",
+  "main": "dist/index.js",
+  "bin": {
+    "merge-assist": "dist/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ts-node src/index.js",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "clean": "rm -rf dist",
+    "test:detect": "ts-node src/index.ts detect",
+    "test:analyze": "ts-node src/index.ts analyze",
+    "prebuild": "npm run clean"
+  },
+  "keywords": [
+    "merge-conflicts",
+    "git",
+    "copilot-cli",
+    "ai",
+    "cli-tool"
+  ],
+  "author": "Edwin Einsen Vásquez Velásquez",
+  "license": "MIT",
+  "description": "AI-powered merge conflict resolver using GitHub Copilot CLI",
   "dependencies": {
     "chalk": "^5.6.2",
     "commander": "^14.0.2",
