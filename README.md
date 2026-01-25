@@ -2,8 +2,9 @@
 
 AI-powered merge conflict resolver using GitHub Copilot CLI. Built for the GitHub Copilot Hackathon.
 
-![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+[![npm version](https://img.shields.io/npm/v/merge-assist-cli.svg)](https://www.npmjs.com/package/merge-assist-cli)
+[![npm downloads](https://img.shields.io/npm/dm/merge-assist-cli.svg)](https://www.npmjs.com/package/merge-assist-cli)
+[![License](https://img.shields.io/npm/l/merge-assist-cli.svg)](https://github.com/ZarakiLancelot/merge-assist-cli/blob/main/LICENSE)
 ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue.svg)
 
 ## ✨ Features
