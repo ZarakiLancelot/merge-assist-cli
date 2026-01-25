@@ -2,7 +2,7 @@
 
 AI-powered merge conflict resolver using GitHub Copilot CLI. Built for the GitHub Copilot Hackathon.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue.svg)
 
