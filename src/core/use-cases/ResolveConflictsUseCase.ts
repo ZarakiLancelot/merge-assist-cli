@@ -25,7 +25,7 @@ export class ResolveConflictsUseCase {
       const resolution = await this.conflictResolver.resolve(conflict, strategy, options);
 
       if (!options?.dryRun) {
-        await this.conflictResolver.applyResolution(resolution);
+        await this.conflictResolver.applyResolution(resolution, conflict);
         conflict.resolve();
       }
 
@@ -44,8 +44,8 @@ export class ResolveConflictsUseCase {
     }
   }
 
-  async revert(resolution: Resolution): Promise<void> {
-    await this.conflictResolver.revertResolution(resolution);
+  async revert(resolution: Resolution, conflict: Conflict): Promise<void> {
+    await this.conflictResolver.revertResolution(resolution, conflict);
   }
 
   async resolveMultiple(

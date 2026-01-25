@@ -46,13 +46,8 @@ export class ConflictResolverService implements IConflictResolver {
     return resolution;
   }
 
-  async applyResolution(resolution: Resolution): Promise<void> {
+  async applyResolution(resolution: Resolution, conflict: Conflict): Promise<void> {
     try {
-      const conflict = await this.findConflictInFile(resolution.conflictId);
-      if (!conflict) {
-        throw new ResolutionError(resolution.conflictId, 'Conflict not found in file');
-      }
-
       const currentContent = await this.fileManager.readFile(conflict.file);
       const updatedContent = this.replaceConflictInContent(
         currentContent,
@@ -63,7 +58,7 @@ export class ConflictResolverService implements IConflictResolver {
       await this.fileManager.writeFile(conflict.file, updatedContent);
     } catch (error) {
       if (resolution.backup) {
-        await this.backupManager.restoreBackup(resolution.backup, '');
+        await this.backupManager.restoreBackup(resolution.backup, conflict.file);
       }
       throw new ResolutionError(
         resolution.conflictId,
@@ -72,17 +67,12 @@ export class ConflictResolverService implements IConflictResolver {
     }
   }
 
-  async revertResolution(resolution: Resolution): Promise<void> {
+  async revertResolution(resolution: Resolution, conflict: Conflict): Promise<void> {
     if (!resolution.backup) {
       throw new ResolutionError(resolution.conflictId, 'No backup available for revert');
     }
 
     try {
-      const conflict = await this.findConflictInFile(resolution.conflictId);
-      if (!conflict) {
-        throw new ResolutionError(resolution.conflictId, 'Conflict not found');
-      }
-
       await this.backupManager.restoreBackup(resolution.backup, conflict.file);
     } catch (error) {
       throw new ResolutionError(
@@ -133,13 +123,6 @@ export class ConflictResolverService implements IConflictResolver {
       resolvedContent,
       ...afterConflict,
     ].join('\n');
-  }
-
-  private async findConflictInFile(_conflictId: string): Promise<Conflict | null> {
-    // This is a simplified implementation
-    // In a real scenario, we would need to parse the file again
-    // or maintain a registry of conflicts
-    return null;
   }
 
   setBackupDirectory(directory: string): void {

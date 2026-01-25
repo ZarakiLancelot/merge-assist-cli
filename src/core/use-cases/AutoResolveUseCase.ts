@@ -73,7 +73,7 @@ export class AutoResolveUseCase {
         });
 
         if (!options.dryRun) {
-          await this.conflictResolver.applyResolution(resolution);
+          await this.conflictResolver.applyResolution(resolution, conflict);
           conflict.resolve();
         }
 
