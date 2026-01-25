@@ -1,6 +1,6 @@
 {
   "name": "merge-assist-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AI-powered merge conflict resolver using GitHub Copilot CLI",
   "main": "dist/index.js",
   "bin": {
